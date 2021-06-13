@@ -11,7 +11,7 @@ async function bootstrap() {
     // Creates Swagger documentation and OpenAPI console on the root path (http://localhost:3000)
     const swaggerOptions = new DocumentBuilder().build();
     const document = SwaggerModule.createDocument(app, swaggerOptions);
-    SwaggerModule.setup('/', app, document);
+    SwaggerModule.setup('/api', app, document);
 
 
     await app.listen(3000);

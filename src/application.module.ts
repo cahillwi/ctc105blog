@@ -1,6 +1,8 @@
 import {MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
+import { ServeStaticModule } from '@nestjs/serve-static';
 import cookieParser from 'cookie-parser';
 import glob from 'glob';
+import {join} from 'path';
 
 import {AuthMiddleware} from './auth.module/auth-middleware';
 
@@ -13,6 +15,11 @@ const controllers =
 
 
 @Module({
+    imports: [
+        ServeStaticModule.forRoot({
+          rootPath: join(__dirname, '..', 'client'),
+        }),
+      ],
     controllers
     })
     export class ApplicationModule implements NestModule {
